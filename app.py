@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import datetime as dt
 import requests
+import os
 
 import plotly.graph_objects as go
 import dash

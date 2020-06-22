@@ -19,7 +19,6 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'default-value-used-in-development')
-app.title=tabtitle
 
 #app layout
 app.layout = html.Div([

@@ -13,6 +13,8 @@ from dash.dependencies import Input, Output, State
 #import dash_bootstrap_components as dbc
 #from plotly.subplots import make_subplots
 
+#saved price data
+bstamp_old = pd.read_csv('bitstamp_historical.csv')
 
 #app stuff
 #external_stylesheets = [dbc.themes.DARKLY]

@@ -56,9 +56,9 @@ dcc.Tabs([
         dcc.Dropdown(
             id='vol dropdown 1',
             options=[
-                {'label': '10 day realized vol', 'value': '10 day realized vol'},
-                {'label': '30 day realized vol', 'value': '30 day realized vol'},
-                {'label': '90 day realized vol', 'value': '90 day realized vol'}
+                {'label': '10 day realized volatility', 'value': '10 day realized vol'},
+                {'label': '30 day realized volatility', 'value': '30 day realized vol'},
+                {'label': '90 day realized volatility', 'value': '90 day realized vol'}
         ],
             value='10 day realized vol'
     ),
@@ -68,9 +68,9 @@ dcc.Tabs([
         dcc.Checklist(
             id = 'vol checklist',
             options=[
-                {'label': '10 day realized vol', 'value': '10 day realized vol'},
-                {'label': '30 day realized vol', 'value': '30 day realized vol'},
-                {'label': '90 day realized vol', 'value': '90 day realized vol'}
+                {'label': '10 day realized volatility', 'value': '10 day realized vol'},
+                {'label': '30 day realized volatility', 'value': '30 day realized vol'},
+                {'label': '90 day realized volatility', 'value': '90 day realized vol'}
         ],
             value=['10 day realized vol'],
             labelStyle={'display': 'inline-block'}
@@ -86,9 +86,9 @@ dcc.Tabs([
         dcc.Dropdown(
             id='dropdown vol 2',
             options=[
-                {'label': '10 day realized vol', 'value': '10 day realized vol'},
-                {'label': '30 day realized vol', 'value': '30 day realized vol'},
-                {'label': '90 day realized vol', 'value': '90 day realized vol'}
+                {'label': '10 day realized volatility', 'value': '10 day realized vol'},
+                {'label': '30 day realized volatility', 'value': '30 day realized vol'},
+                {'label': '90 day realized volatility', 'value': '90 day realized vol'}
         ],
             value='10 day realized vol'
     ),

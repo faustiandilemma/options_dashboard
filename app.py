@@ -347,7 +347,7 @@ def update_graph(dropdown_value, checklist_value):
     rvol_values = [10,30,90,365]
     for value in rvol_values:
         data['stdev'+str(value)] = data['returns'].rolling(value).std()
-        data[str(value)+' day realized vol'] = data['stdev'+str(value)]*(365**0.5)*100
+        data[str(value)+' day realized volatility'] = data['stdev'+str(value)]*(365**0.5)*100
     ###
     trace = [go.Histogram(x=data[dropdown_value], opacity=0.75, name='realized vol distribution')]
     dist_figure = {'data' : trace,
@@ -361,13 +361,13 @@ def update_graph(dropdown_value, checklist_value):
                 }
             }}
     graphs=[]
-    if '10 day realized vol' in checklist_value:
+    if '10 day realized volatility' in checklist_value:
         scatter1 = go.Scatter(x=data['date'], y=data['10 day realized vol'], opacity=0.75, name='10 day realized vol')
         graphs.append(scatter1)
-    if '30 day realized vol' in checklist_value:
+    if '30 day realized volatility' in checklist_value:
         scatter2 = go.Scatter(x=data['date'], y=data['30 day realized vol'], opacity=0.75, name='30 day realized vol')
         graphs.append(scatter2)
-    if '90 day realized vol' in checklist_value:
+    if '90 day realized volatility' in checklist_value:
         scatter3 = go.Scatter(x=data['date'], y=data['90 day realized vol'], opacity=0.75, name='90 day realized vol')
         graphs.append(scatter3)
     scat_figure = {'data': graphs,

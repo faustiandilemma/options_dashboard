@@ -160,7 +160,9 @@ dcc.Tabs([
         ]),
 #tab 4
     dcc.Tab(label='Options Analysis', children=[
-    html.Div([  
+    html.Div([
+        html.B('Enter the option and volatility criteria below to see the distribution of future returns and the probability of the option being in the money based on historical data'),
+        html.Br(),
         dcc.Input(id="btc price", type="number", placeholder=""),
         html.I("Enter current BTC price (round to nearest dollar)"),
         html.Br(),

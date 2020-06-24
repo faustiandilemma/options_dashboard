@@ -48,7 +48,10 @@ dcc.Tabs([
             ),
         ]),
         html.B('Feedback or issues? '),
-        html.A('Contact here',href="https://twitter.com/FaustianDilemma")
+        html.A('Contact here',href="https://twitter.com/FaustianDilemma"),
+        html.Br(),
+        html.B('Tutorial and discussion '),
+        html.A('here',href="https://discord.gg/2yqtVXa")
 ]),
 #tab2
     dcc.Tab(label='Historical Vol Data', children=[

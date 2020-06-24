@@ -545,7 +545,9 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
                     },
                     'yaxis': {
                         'title':'frequency of return'
-                    }
+                    },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
                 }}
         #table
         decile = pd.qcut(return_forecast, 10,precision=2)
@@ -576,8 +578,8 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
             if option_type == 'straddle':
                 prob_itm =(len(straddle_df[straddle_df < straddle_threshold])/len(straddle_df))*100
         return forecast, decile_df.to_dict('rows'), html.Div(
-            [dcc.Markdown('''Based on historical returns and the volatility criteria you selected, 
-            there is a {:.2f}% of this option being in the money at expiry'''.format(prob_itm))]
+            [dcc.Markdown('''**Based on historical returns and the volatility criteria you selected, 
+            there is a {:.2f}% of this option being in the money at expiry**'''.format(prob_itm))]
         )
 if __name__ == '__main__':
     app.run_server()

@@ -361,7 +361,9 @@ def update_graph(dropdown_value, checklist_value):
                 },
                 'yaxis': {
                     'title':'frequency of volatility'
-                }
+                },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
             }}
     graphs=[]
     if '10 day realized vol' in checklist_value:
@@ -378,7 +380,10 @@ def update_graph(dropdown_value, checklist_value):
                 'title': 'Realized Volatility',
                 'yaxis': {
                     'title':'volatility (%)'
-            }}}
+            },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
+           }}
     return dist_figure, scat_figure
 
 #callback for tab 3
@@ -450,7 +455,9 @@ def update_forecast(slider_value, dropdown_value, inequality_value, forecast_val
                 },
                 'yaxis': {
                     'title':'frequency of volatility'
-                }
+                },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
             }}
     forecast1 ={
         'data': [return_forecast],
@@ -462,7 +469,9 @@ def update_forecast(slider_value, dropdown_value, inequality_value, forecast_val
                 },
                 'yaxis': {
                     'title':'frequency of return'
-                }
+                },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
             }}
     return forecast, forecast1, decile_df.to_dict('rows')
 
@@ -533,7 +542,9 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
                     },
                     'yaxis': {
                         'title':'frequency of return'
-                    }
+                    },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
                 }}
         #graph
         forecast ={
@@ -545,7 +556,9 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
                     },
                     'yaxis': {
                         'title':'frequency of return'
-                    }
+                    },
+                'paper_bgcolor':'rgb(233,233,233)',
+                'plot_bgcolor':'rgb(233,233,233)'
                 }}
         #table
         decile = pd.qcut(return_forecast, 10,precision=2)

@@ -34,13 +34,14 @@ dcc.Tabs([
         dcc.RadioItems(
             id='options expiry tab1',
             options=[
-            {'label': 'June 26th, 2020', 'value': 'BTC-26JUN20'},
-            {'label': 'July 3rd, 2020', 'value': 'SYN.BTC-3JUL20'},
-            {'label': 'July 31st, 2020', 'value': 'SYN.BTC-31JUL20'},
-            {'label': 'September 25th, 2020', 'value': 'BTC-25SEP20'},
-            {'label': 'December 25th, 2020', 'value': 'BTC-25DEC20'}
+                {'label': 'July 3rd, 2020', 'value': 'SYN.BTC-3JUL20'},
+                {'label': 'July 10th, 2020', 'value': 'SYN.BTC-10JUL20'},
+                {'label': 'July 31st, 2020', 'value': 'SYN.BTC-31JUL20'},
+                {'label': 'Sept 25th, 2020', 'value': 'BTC-25SEP20'},
+                {'label': 'Dec 25th, 2020', 'value': 'BTC-25DEC20'},
+                {'label': 'March 26th, 2021', 'value': 'BTC-26MAR21'}
         ],
-            value = 'BTC-26JUN20',
+            value = 'SYN.BTC-3JUL20',
             labelStyle={'display': 'inline-block'}
         ),
         dcc.Graph(
@@ -583,5 +584,3 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
             [dcc.Markdown('''**Based on historical returns and the volatility criteria you selected, 
             there is a {:.2f}% of this option being in the money at expiry**'''.format(prob_itm))]
         )
-if __name__ == '__main__':
-    app.run_server()

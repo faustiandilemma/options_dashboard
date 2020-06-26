@@ -584,3 +584,5 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
             [dcc.Markdown('''**Based on historical returns and the volatility criteria you selected, 
             there is a {:.2f}% of this option being in the money at expiry**'''.format(prob_itm))]
         )
+if __name__ == '__main__':
+    app.run_server()

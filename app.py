@@ -244,7 +244,58 @@ dcc.Tabs([
     ]),
     html.Div(id='output'),
         ]),
+#tab 5
+    dcc.Tab(label='Kelly Criterion', children=[
+        html.Div([
+        #can make different kelly's part of dropdown
+        html.B('If you have your past trade data (including win %, avg win, and avg loss), you can enter those numbers in the fields below to see what the optimal risk is based off of the simple version of the Kelly Criterion or a fraction of it.  You can also calculate with a ruin factor for more conservative risk.'),
+        html.Br(),
+        dcc.Input(id="win rate", type="number", placeholder=""),        
+        html.I('Enter win rate (as a decimal)'),
+        html.Br(),
+        dcc.Input(id="win amount", type="number", placeholder=""),        
+        html.I("Enter average win dollar amount"),
+        html.Br(),
+        dcc.Input(id="loss amount", type="number", placeholder=""),
+        html.I("Enter average loss dollar amount"),
+        html.Br(),
+        html.Label('Select Kelly fraction'),
+        dcc.RadioItems(
+            id='kelly fraction',
+            options=[
+                {'label': '100%', 'value': '1'},
+                {'label': '90%', 'value': '.9'},
+                {'label': '80%', 'value': '.8'},
+                {'label': '70%', 'value': '.7'},
+                {'label': '60%', 'value': '.6'},
+                {'label': '50%', 'value': '.5'}
+                ],
+            value = '1',
+            labelStyle={'display': 'inline-block'}
+            ),
+        html.Label('Include ruin factor? (this can be the largest past loss amount or can be a simulated figure based on slippage or other unknowns.  Recommended if selling options.)'),
+        dcc.RadioItems(
+            id='ruin factor',
+            options=[
+                {'label': 'yes', 'value': 'yes'},
+                {'label': 'no', 'value': 'no'}
+            ],
+            value = 'no',
+            labelStyle={'display': 'inline-block'}
+        ),
+        dcc.Input(id='ruin probability', type="number", placeholder=""),
+        html.I('Enter ruin probability as a decimal'),
+        html.Br(),
+        dcc.Input(id="ruin amount", type="number", placeholder=""),
+        html.I('Enter ruin dollar amount'),
+        html.Br(),
+        html.Button(id='kelly button',n_clicks=None, children='Submit')
     ]),
+    html.Div(
+        id='kelly result'
+    )        
+    ]),
+]),
 ])
 
 #callback for tab 1
@@ -584,5 +635,37 @@ def expected_return(n_clicks,realized_vol, inequality_value, vol_value, duration
             [dcc.Markdown('''**Based on historical returns and the volatility criteria you selected, 
             there is a {:.2f}% of this option being in the money at expiry**'''.format(prob_itm))]
         )
+#tab 5 callback
+@app.callback(Output('kelly result', 'children'),
+               [Input("kelly button", "n_clicks")],
+               [State('win rate', 'value'), State('win amount', 'value'), State('loss amount', 'value'), 
+               State('ruin factor', 'value'),State('ruin probability','value'), State('ruin amount', 'value'),
+               State('kelly fraction', 'value')])
+
+def kelly_output(n_clicks, win_rate, win_amt, loss_amt, ruin_factor, ruin_prob, ruin_amt, k_fraction):
+    if n_clicks is None:
+        return dash.no_update
+    else:
+        num=win_rate*(win_amt/loss_amt) - (1-win_rate)*1
+        denom=(win_amt/loss_amt)
+        bet_size= (num/denom) * float(k_fraction) * 100
+        if ruin_factor == 'yes':
+            expectation = win_rate*(win_amt/loss_amt) - (1-win_rate)*1 - ruin_prob*(ruin_amt/loss_amt)
+            gamma = (win_amt/loss_amt)
+            lambda1 = (ruin_amt/loss_amt)
+            a = (gamma) * lambda1
+            b = -(win_rate*gamma*(1+lambda1) + (1-win_rate)*(gamma-lambda1) + ruin_prob*(lambda1)*((gamma) - 1))
+            c = expectation
+            root1 = ((-b + np.sqrt(b**2 - 4*a*c))/(2*a))*100
+            root2 = ((-b - np.sqrt(b**2 - 4*a*c))/(2*a))*100
+            bet_risk = min(root1, root2)*float(k_fraction)
+            return html.Div(
+            [dcc.Markdown('''**Your maximum trade risk should be {:.2f}% of your bankroll**'''.format(bet_risk))]
+        )
+        if ruin_factor == 'no':
+            return html.Div(
+            [dcc.Markdown('''**Your maximum trade risk should be {:.2f}% of your bankroll**'''.format(bet_size))]
+        )
+
 if __name__ == '__main__':
     app.run_server()

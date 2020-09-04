@@ -35,7 +35,7 @@ dcc.Tabs([
             id='options expiry tab1',
             options=[
                 {'label': 'Sept 4th, 2020', 'value': 'SYN.BTC-11SEP20'},
-                {'label': 'Sept 4th, 2020', 'value': 'SYN.BTC-18SEP20'}
+                {'label': 'Sept 4th, 2020', 'value': 'SYN.BTC-18SEP20'},
                 {'label': 'Sept 25th, 2020', 'value': 'BTC-25SEP20'},
                 {'label': 'Dec 25th, 2020', 'value': 'BTC-25DEC20'},
                 {'label': 'March 26th, 2021', 'value': 'BTC-26MAR21'}

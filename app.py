@@ -41,7 +41,7 @@ dcc.Tabs([
                 {'label': 'Feb 26th, 2021', 'value': 'SYN.BTC-26FEB21'},
                 {'label': 'March 26th, 2021', 'value': 'BTC-26MAR21'},
                 {'label': 'June 25th, 2021', 'value': 'BTC-25JUN21'},
-                {'label': 'June 25th, 2021', 'value': 'BTC-24SEP21'}
+                {'label': 'Sept 24th, 2021', 'value': 'BTC-24SEP21'}
         ],
             value = 'SYN.BTC-1JAN20',
             labelStyle={'display': 'inline-block'}

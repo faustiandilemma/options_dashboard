@@ -43,7 +43,7 @@ dcc.Tabs([
                 {'label': 'June 25th, 2021', 'value': 'BTC-25JUN21'},
                 {'label': 'Sept 24th, 2021', 'value': 'BTC-24SEP21'}
         ],
-            value = 'SYN.BTC-1JAN20',
+            value = 'SYN.BTC-1JAN21',
             labelStyle={'display': 'inline-block'}
         ),
         dcc.Graph(
@@ -74,13 +74,13 @@ dcc.Tabs([
         dcc.Checklist(
             id = 'vol checklist',
             options=[
-                {'label': '1 day realized volatility', 'value': '1 day realized vol'},
+                {'label': '2 day realized volatility', 'value': '2 day realized vol'},
                 {'label': '5 day realized volatility', 'value': '5 day realized vol'},
                 {'label': '10 day realized volatility', 'value': '10 day realized vol'},
                 {'label': '30 day realized volatility', 'value': '30 day realized vol'},
                 {'label': '90 day realized volatility', 'value': '90 day realized vol'}
         ],
-            value=['1 day realized vol'],
+            value=['2 day realized vol'],
             labelStyle={'display': 'inline-block'}
 ),
         dcc.Graph(
@@ -405,7 +405,7 @@ def update_graph(dropdown_value, checklist_value):
 
     data['returns'] = data['close'].pct_change()
     data['% returns'] = data['returns']*100
-    rvol_values = [1,5,10,30,90,365]
+    rvol_values = [2,5,10,30,90,365]
     for value in rvol_values:
         data['stdev'+str(value)] = data['returns'].rolling(value).std()
         data[str(value)+' day realized vol'] = data['stdev'+str(value)]*(365**0.5)*100
@@ -422,8 +422,8 @@ def update_graph(dropdown_value, checklist_value):
                 }
             }}
     graphs=[]
-    if '1 day realized vol' in checklist_value:
-        scatter1 = go.Scatter(x=data['date'], y=data['1 day realized vol'], opacity=0.75, name='1 day realized vol')
+    if '2 day realized vol' in checklist_value:
+        scatter1 = go.Scatter(x=data['date'], y=data['2 day realized vol'], opacity=0.75, name='2 day realized vol')
         graphs.append(scatter1)
     if '5 day realized vol' in checklist_value:
         scatter2 = go.Scatter(x=data['date'], y=data['5 day realized vol'], opacity=0.75, name='5 day realized vol')

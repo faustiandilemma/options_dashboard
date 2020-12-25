@@ -34,14 +34,15 @@ dcc.Tabs([
         dcc.RadioItems(
             id='options expiry tab1',
             options=[
-                {'label': 'Dec 4th, 2020', 'value': 'SYN.BTC-4DEC20'},
-                {'label': 'Dec 11th, 2020', 'value': 'SYN.BTC-11DEC20'},
-                {'label': 'Dec 18th, 2020', 'value': 'SYN.BTC-18DEC20'},
-                {'label': 'Dec 25th, 2020', 'value': 'BTC-25DEC20'},
+                {'label': 'Jan 1st, 2020', 'value': 'SYN.BTC-1JAN20'},
+                {'label': 'Jan 8th, 2020', 'value': 'SYN.BTC-8JAN20'},
+                {'label': 'Jan 15th, 2020', 'value': 'SYN.BTC-15JAN20'},
+                {'label': 'Jan 29th, 2020', 'value': 'BTC-29JAN20'},
+                {'label': 'Feb 26th, 2020', 'value': 'BTC-26FEB20'},
                 {'label': 'March 26th, 2021', 'value': 'BTC-26MAR21'},
                 {'label': 'June 25th, 2021', 'value': 'BTC-25JUN21'}
         ],
-            value = 'SYN.BTC-4DEC20',
+            value = 'SYN.BTC-1JAN20',
             labelStyle={'display': 'inline-block'}
         ),
         dcc.Graph(
